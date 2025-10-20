@@ -22,6 +22,5 @@ app.use(express_1.default.json());
 app.use("/users", users_1.usersRouter);
 app.use("/job-listings", jobListings_1.jobListingsRouter);
 app.listen(config_1.env.PORT, () => {
-    console.log(config_1.env.NODE_ENV === "production" ? " Production Mode" : "Development Mode");
-    console.log(`Server listening at port ${config_1.env.PORT}`);
+    console.log(`Server listening at port ${config_1.env.PORT} in ${config_1.env.NODE_ENV} mode`);
 });
