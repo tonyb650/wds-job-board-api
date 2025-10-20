@@ -10,6 +10,8 @@ import { setupCors } from "./setup/cors"
 import { stripeRouter } from "./routes/stripe"
 
 const app = express()
+app.set("trust proxy", 1); // needed if behind Render's proxy
+console.log(env.NODE_ENV === "production"? " Production Mode": "Development Mode")
 
 setupSession(app)
 setupCors(app)
