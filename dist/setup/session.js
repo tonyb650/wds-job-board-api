@@ -34,6 +34,7 @@ function setupSession(app) {
         secret: config_1.env.SESSION_SECRET,
         cookie: {
             httpOnly: true,
+            sameSite: "none",
             secure: config_1.env.NODE_ENV === "production",
             maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
         },

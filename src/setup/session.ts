@@ -38,6 +38,7 @@ export function setupSession(app: Express) {
       secret: env.SESSION_SECRET,
       cookie: {
         httpOnly: true,
+        sameSite: "none",
         secure: env.NODE_ENV === "production",
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
       },
