@@ -31,10 +31,10 @@ const prisma_session_store_1 = require("@quixo3/prisma-session-store");
 // }
 function setupSession(app) {
     app.use((0, express_session_1.default)({
-        name: "sid",
+        // name: "sid",
         secret: config_1.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
+        resave: true,
+        saveUninitialized: true,
         cookie: {
             httpOnly: true,
             secure: config_1.env.NODE_ENV === "production",

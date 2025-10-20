@@ -35,10 +35,10 @@ declare module "express-session" {
 export function setupSession(app: Express) {
   app.use(
     session({
-      name: "sid",
+      // name: "sid",
       secret: env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false,
+      resave: true,
+      saveUninitialized: true,
       cookie: {
         httpOnly: true,
         secure: env.NODE_ENV === "production",
