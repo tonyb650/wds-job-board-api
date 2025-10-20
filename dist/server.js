@@ -13,6 +13,7 @@ const session_1 = require("./setup/session");
 const cors_1 = require("./setup/cors");
 const stripe_1 = require("./routes/stripe");
 const app = (0, express_1.default)();
+app.set("trust proxy", 1); // needed if behind Render's proxy
 (0, session_1.setupSession)(app);
 (0, cors_1.setupCors)(app);
 app.use("/stripe-webhooks", express_1.default.raw({ type: "*/*" }), stripe_1.stripeRouter);
@@ -21,5 +22,6 @@ app.use(express_1.default.json());
 app.use("/users", users_1.usersRouter);
 app.use("/job-listings", jobListings_1.jobListingsRouter);
 app.listen(config_1.env.PORT, () => {
+    console.log(config_1.env.NODE_ENV === "production" ? " Production Mode" : "Development Mode");
     console.log(`Server listening at port ${config_1.env.PORT}`);
 });
