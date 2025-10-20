@@ -31,15 +31,16 @@ const prisma_session_store_1 = require("@quixo3/prisma-session-store");
 // }
 function setupSession(app) {
     app.use((0, express_session_1.default)({
+        name: "sid",
         secret: config_1.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
         cookie: {
             httpOnly: true,
-            sameSite: "none",
             secure: config_1.env.NODE_ENV === "production",
+            sameSite: "none",
             maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
         },
-        resave: true,
-        saveUninitialized: true,
         store: new prisma_session_store_1.PrismaSessionStore(new client_1.PrismaClient(), {
             checkPeriod: 2 * 60 * 1000,
             dbRecordIdIsSessionId: true,

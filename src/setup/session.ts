@@ -35,15 +35,16 @@ declare module "express-session" {
 export function setupSession(app: Express) {
   app.use(
     session({
+      name: "sid",
       secret: env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        sameSite: "none",
         secure: env.NODE_ENV === "production",
+        sameSite: "none",
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
       },
-      resave: true,
-      saveUninitialized: true,
       store: new PrismaSessionStore(new PrismaClient(), {
         checkPeriod: 2 * 60 * 1000, //ms
         dbRecordIdIsSessionId: true,
