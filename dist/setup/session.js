@@ -38,7 +38,7 @@ function setupSession(app) {
         cookie: {
             httpOnly: true,
             secure: config_1.env.NODE_ENV === "production",
-            sameSite: config_1.env.NODE_ENV === "production" ? "none" : "lax",
+            // sameSite: env.NODE_ENV === "production" ? "none": "lax",
             maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
         },
         store: new prisma_session_store_1.PrismaSessionStore(new client_1.PrismaClient(), {

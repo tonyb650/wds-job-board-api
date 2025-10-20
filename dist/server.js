@@ -13,7 +13,7 @@ const session_1 = require("./setup/session");
 const cors_1 = require("./setup/cors");
 const stripe_1 = require("./routes/stripe");
 const app = (0, express_1.default)();
-// app.set("trust proxy", 1); // needed if behind Render's proxy
+app.set("trust proxy", 1); // needed if behind Render's proxy
 (0, session_1.setupSession)(app);
 (0, cors_1.setupCors)(app);
 app.use("/stripe-webhooks", express_1.default.raw({ type: "*/*" }), stripe_1.stripeRouter);

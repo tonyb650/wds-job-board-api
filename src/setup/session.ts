@@ -42,7 +42,7 @@ export function setupSession(app: Express) {
       cookie: {
         httpOnly: true,
         secure: env.NODE_ENV === "production",
-        sameSite: env.NODE_ENV === "production" ? "none": "lax",
+        // sameSite: env.NODE_ENV === "production" ? "none": "lax",
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
       },
       store: new PrismaSessionStore(new PrismaClient(), {
