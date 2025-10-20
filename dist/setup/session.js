@@ -33,8 +33,8 @@ function setupSession(app) {
     app.use((0, express_session_1.default)({
         name: "sid",
         secret: config_1.env.SESSION_SECRET,
-        resave: true,
-        saveUninitialized: true,
+        resave: false,
+        saveUninitialized: false,
         cookie: {
             httpOnly: true,
             secure: config_1.env.NODE_ENV === "production",

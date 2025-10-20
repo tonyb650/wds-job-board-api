@@ -37,8 +37,8 @@ export function setupSession(app: Express) {
     session({
       name: "sid",
       secret: env.SESSION_SECRET,
-      resave: true,
-      saveUninitialized: true,
+      resave: false,
+      saveUninitialized: false,
       cookie: {
         httpOnly: true,
         secure: env.NODE_ENV === "production",
