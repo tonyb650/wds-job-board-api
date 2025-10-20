@@ -10,7 +10,7 @@ import { setupCors } from "./setup/cors"
 import { stripeRouter } from "./routes/stripe"
 
 const app = express()
-app.set("trust proxy", 1); // needed if behind Render's proxy
+// app.set("trust proxy", 1); // needed if behind Render's proxy
 
 
 setupSession(app)
